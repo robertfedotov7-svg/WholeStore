@@ -9,7 +9,7 @@ import { useAuth } from "@/context/AuthContext";
 const FormSend = () => {
     const { cartItems, deliveryMethod, formData, paymentMethod, invoiceData } = useApp();
     const { user } = useAuth();
-    const handleSubmit = (e) => {
+    const handleSubmit = (e:any) => {
         e.preventDefault();
 
         if (!formData.name.trim() || !formData.phone.trim()) {

@@ -11,7 +11,7 @@ const Inputt = () => {
         searchQuery,
         setSearchQuery,
     } = useApp();
-    const handleKeyDown = (e) => {
+    const handleKeyDown = (e:any) => {
         if (e.target.value.trim() !== "") {
             if (e.key === "Enter") {
                 router.push('/catalog');

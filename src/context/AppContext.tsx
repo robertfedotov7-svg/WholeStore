@@ -25,7 +25,7 @@ function cartReducer(cartItems: TCartItems, action: CartAction): TCartItems {
             // @ts-ignore
             return [
                 ...cartItems,
-                { id: Date.now(), product, quantity }
+                { id: Date.now().toString(), product, quantity } // 👈 ИСПРАВЛЕНО: теперь id это string
             ];
         }
 

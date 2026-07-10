@@ -1,5 +1,5 @@
 import React from 'react';
-export default function Box ({ TitleName, DesctiptionName, SVG }) {
+export default function Box ({ TitleName, DesctiptionName, SVG }:any) {
     return (
         <article className="flex flex-col p-6 bg-slate-50 rounded-2xl border border-slate-100 transition-all duration-200 hover:-translate-y-1 hover:shadow-lg">
             <div className="flex items-center justify-center w-12 h-12 bg-blue-50 text-blue-600 rounded-xl mb-5 shrink-0">

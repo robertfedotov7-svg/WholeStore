@@ -8,9 +8,9 @@ import POPULAR_PRODUCTS from '../../data/popular-products.json'
 
 
 export default function PopularProducts() {
-    const carouselRef = useRef(null);
+    const carouselRef = useRef<HTMLDivElement>(null);
 
-const scroll = (direction) => {
+const scroll = (direction:any) => {
         if (carouselRef.current) {
             const track = carouselRef.current;
             const firstCard = track.firstElementChild;
@@ -69,8 +69,8 @@ const scroll = (direction) => {
                 >
                     {POPULAR_PRODUCTS.map((product) => (
                         /* Обертка для фиксации размера и корректного snap-эффекта */
-                        <div key={product.id} className="w-[300px] shrink-0 snap-center">
-                            <ProductCard product={product} hight={"h-[450px]"} />
+                        <div key={product.id} className="w-[300px] h-[450px] shrink-0 snap-center">
+                            <ProductCard product={product as any} />
                         </div>
                     ))}
                 </div>

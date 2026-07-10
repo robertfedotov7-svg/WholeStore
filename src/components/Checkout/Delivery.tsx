@@ -13,7 +13,7 @@ const AddressSuggestions = dynamic(
 const Delivery = () => {
     const { deliveryMethod, setDeliveryMethod } = useApp();
 
-    const handleChangeDeliveryMethod = (e) => {
+    const handleChangeDeliveryMethod = (e: any) => {
         setDeliveryMethod(prev => ({ ...prev, [e.target.name]: e.target.value }));
     }
 
@@ -61,7 +61,7 @@ const Delivery = () => {
                     <AddressSuggestions
                         token="89e1f32f87adf687145f2251aaaadd25ecdbeb0a"
                         // 2. ИСПРАВЛЕНО: Читаем адрес напрямую из стейта контекста (или ставим пустую строку по дефолту)
-                        value={deliveryMethod?.address ? { value: deliveryMethod.address } : undefined}
+                        value={(deliveryMethod?.address ? { value: deliveryMethod.address } : undefined) as any}
                         onChange={(suggestion) => {
                             handleChangeDeliveryMethod({
                                 target: {

@@ -1,15 +1,19 @@
 "use client"
 import React from "react";
 
-// 1. ИСПРАВЛЕНО: Удален импорт из 'antd' и добавлен ваш собственный контекст
-import { useApp } from "../../context/AppContext"; // 👈 Убедитесь, что относительный путь ведет к вашему AppContext
+// Добавлен относительный путь к вашему AppContext
+import { useApp } from "../../context/AppContext";
 
-const PayBox = ({ }) => {
-    // Теперь хук вернет все нужные переменные из вашего стейта
-    const { paymentMethod, setPaymentMethod, invoiceData, setInvoiceData } = useApp();
+// 1. ИСПРАВЛЕНО: Добавлены типы для пропсов компонента (сейчас он пустой)
+interface PayBoxProps {}
 
-    const handleChangeInvoice = (e) => {
-        setInvoiceData(prev => ({ ...prev, [e.target.name]: e.target.value }));
+const PayBox: React.FC<PayBoxProps> = () => {
+    // Получаем переменные из вашего стейта
+    const { paymentMethod, setPaymentMethod, invoiceData, setInvoiceData } = useApp() as any;
+
+    // 2. ИСПРАВЛЕНО: Явно указан тип для параметра события 'e'
+    const handleChangeInvoice = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setInvoiceData((prev: any) => ({ ...prev, [e.target.name]: e.target.value }));
     };
 
     return (
@@ -20,7 +24,8 @@ const PayBox = ({ }) => {
             <div className="space-y-3">
                 <label className={`flex items-center justify-between p-4 border rounded-xl cursor-pointer transition-all ${paymentMethod === "sbp" ? "border-blue-500 bg-blue-500/5" : "border-slate-200 bg-white hover:border-slate-300"}`}>
                     <div className="flex items-center gap-4">
-                        <input type="radio" value="sbp" checked={paymentMethod === "sbp"} onChange={(e) => setPaymentMethod(e.target.value)} name="payment" className="w-4 h-4 text-blue-600 border-slate-300 focus:ring-blue-500/20" />
+                        {/* 3. ИСПРАВЛЕНО: Для onChange радио-кнопки передан корректный тип события */}
+                        <input type="radio" value="sbp" checked={paymentMethod === "sbp"} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPaymentMethod(e.target.value)} name="payment" className="w-4 h-4 text-blue-600 border-slate-300 focus:ring-blue-500/20" />
                         <div className="text-sm">
                             <p className="font-semibold text-slate-900">Система быстрых платежей (СБП)</p>
                             <p className="text-slate-500">Мгновенная оплата по QR-коду</p>
@@ -31,7 +36,7 @@ const PayBox = ({ }) => {
 
                 <label className={`flex items-center justify-between p-4 border rounded-xl cursor-pointer transition-all ${paymentMethod === "bank" ? "border-blue-500 bg-blue-500/5" : "border-slate-200 bg-white hover:border-slate-300"}`}>
                     <div className="flex items-center gap-4">
-                        <input type="radio" value="bank" checked={paymentMethod === "bank"} onChange={(e) => setPaymentMethod(e.target.value)} name="payment" className="w-4 h-4 text-blue-600 border-slate-300 focus:ring-blue-500/20" />
+                        <input type="radio" value="bank" checked={paymentMethod === "bank"} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPaymentMethod(e.target.value)} name="payment" className="w-4 h-4 text-blue-600 border-slate-300 focus:ring-blue-500/20" />
                         <div className="text-sm">
                             <p className="font-semibold text-slate-900">Банковская карта онлайн</p>
                             <p className="text-slate-500">Мир, Visa, MasterCard</p>
@@ -42,7 +47,7 @@ const PayBox = ({ }) => {
 
                 <label className={`flex items-center justify-between p-4 border rounded-xl cursor-pointer transition-all ${paymentMethod === "invoice" ? "border-blue-500 bg-blue-500/5" : "border-slate-200 bg-white hover:border-slate-300"}`}>
                     <div className="flex items-center gap-4">
-                        <input type="radio" value="invoice" checked={paymentMethod === "invoice"} onChange={(e) => setPaymentMethod(e.target.value)} name="payment" className="w-4 h-4 text-blue-600 border-slate-300 focus:ring-blue-500/20" />
+                        <input type="radio" value="invoice" checked={paymentMethod === "invoice"} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPaymentMethod(e.target.value)} name="payment" className="w-4 h-4 text-blue-600 border-slate-300 focus:ring-blue-500/20" />
                         <div className="text-sm">
                             <p className="font-semibold text-slate-900">Оплата по счету (для юрлиц)</p>
                             <p className="text-slate-500">Автоматическое выставление счета на оплату</p>
@@ -52,7 +57,6 @@ const PayBox = ({ }) => {
                 </label>
             </div>
 
-            {/* 2. ИСПРАВЛЕНО: Добавлена безопасная цепочка значений (invoiceData?.поле || ""), чтобы предотвратить крэш */}
             {paymentMethod === "invoice" && (
                 <>
                     <div className="space-y-1 pt-2">

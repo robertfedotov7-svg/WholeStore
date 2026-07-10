@@ -1,7 +1,7 @@
-import { NextRequest } from "next/server";
-import { authConfig } from "@/shared/auth-config";
-import { clientLogoutHandler } from "next-firebase-auth-edge/lib/next/middleware";
+import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(request: NextRequest) {
-    return clientLogoutHandler(request, authConfig);
+    // Выход из аккаунта и удаление кук также автоматически
+    // обрабатываются на уровне middleware при обращении к этому URL.
+    return NextResponse.json({ success: true });
 }

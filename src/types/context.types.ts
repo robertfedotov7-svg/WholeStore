@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from 'react';
-import {TCartItem, TProduct} from "@/types/product.types";
+import {ICartItem, IProduct} from "@/types/product.types";
 
 type DeliveryMethod = {
     method: string,
@@ -24,19 +24,19 @@ type InvoiceData = {
 export type CartAction =
     | {
     type: 'ADD_ITEM';
-    payload: { product: TProduct; quantity: number };
+    payload: { product: IProduct; quantity: number };
 }
     | {
     type: 'UPDATE_QUANTITY';
-    payload: { productId: TProduct['id']; type: '+' | '−' };
+    payload: { productId: IProduct['id']; type: '+' | '−' };
 }
     | {
     type: 'REMOVE_ITEM';
-    payload: { productId: TProduct['id'] };
+    payload: { productId: IProduct['id'] };
 }
     | {
     type: 'INIT_CART';
-    payload: TCartItem[];
+    payload: ICartItem[];
 };
 
 export interface AppContextType {
@@ -46,7 +46,7 @@ export interface AppContextType {
     searchQuery: string;
     setSearchQuery: Dispatch<SetStateAction<string>>;
 
-    cartItems: TCartItem[];
+    cartItems: ICartItem[];
     dispatch: Dispatch<CartAction>; // тип из вашего cartReducer
 
     deliveryMethod: DeliveryMethod;

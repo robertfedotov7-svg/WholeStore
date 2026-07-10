@@ -21,7 +21,7 @@ const Selector = () => {
         }));
     }, [allCategories]);
 
-    const handleSelected = (value) => {
+    const handleSelected = (value:any) => {
         setSelectedCategories([value]); // Обновляем выбранную категорию
         router.push('/catalog'); // Перенаправляем на страницу каталога
     };

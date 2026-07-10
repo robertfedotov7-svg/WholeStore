@@ -137,7 +137,7 @@ export default function WelcomeOnboarding() {
                         <label className="text-xs font-semibold text-slate-600 uppercase tracking-wider">Город</label>
                         <AddressSuggestions
                             token="89e1f32f87adf687145f2251aaaadd25ecdbeb0a"
-                            value={deliveryMethod?.pvz ? { value: deliveryMethod.pvz } : undefined}
+                            value={(deliveryMethod?.pvz ? { value: deliveryMethod.pvz } : undefined) as any}
                             filterFromBound="city"
                             filterToBound="city"
                             onChange={(suggestion) => {

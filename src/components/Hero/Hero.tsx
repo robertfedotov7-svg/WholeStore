@@ -1,6 +1,6 @@
 import HeroImg from "../../assets/HomeHeroImage.jpeg";
 import SearchBar from "../SearchBar/SearchBar";
-export default function Hero({Catalog, noCatalog}) {
+export default function Hero({Catalog, noCatalog}:any) {
     return (
         <>
             <div

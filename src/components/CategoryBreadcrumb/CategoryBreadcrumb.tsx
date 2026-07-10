@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useApp } from "../../context/AppContext"; // Проверьте правильность этого пути к контексту
 
-export default function CategoryBreadcrumb({ category }) {
+export default function CategoryBreadcrumb({ category }: any) {
     const router = useRouter();
     const { setSelectedCategories } = useApp();
 

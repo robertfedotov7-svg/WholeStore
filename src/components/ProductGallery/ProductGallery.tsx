@@ -2,7 +2,12 @@
 
 import { useState } from "react";
 
-export default function ProductGallery({ images = [], title }) {
+interface ProductGalleryProps {
+    images: string[]; // Массив строк (ссылки на картинки)
+    title: string;    // Строка (название товара)
+}
+
+export default function ProductGallery({ images, title }: ProductGalleryProps) {
     const [activeImage, setActiveImage] = useState(images[0] || "");
 
     return (

@@ -33,7 +33,7 @@ export default function Header() {
                     </Link>
 
                     <Navbar/>
-                    <AvatarMenu isOpen={isOpen} setIsOpen={setIsOpen} handleLogout={handleLogout} />
+                    {(AvatarMenu as any)({ isOpen, setIsOpen, handleLogout })}
 
                 </div>
             </div>

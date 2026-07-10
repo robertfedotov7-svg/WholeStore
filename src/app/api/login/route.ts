@@ -1,7 +1,8 @@
-import { NextRequest } from "next/server";
-import { authConfig } from "@/shared/auth-config";
-import { clientLoginHandler } from "next-firebase-auth-edge/lib/next/middleware";
+import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(request: NextRequest) {
-    return clientLoginHandler(request, authConfig);
+    // В новой версии библиотеки обработка этого эндпоинта
+    // автоматически перехватывается в вашем middleware.ts.
+    // Этот роут нужен просто как физическая точка для роутинга Next.js.
+    return NextResponse.json({ success: true });
 }

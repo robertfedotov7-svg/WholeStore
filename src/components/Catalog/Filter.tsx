@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Filter ({ handleCategoryChange, selectedCategories, handleResetAll, allCategories, onlyAvailable, handleOnlyAvailable }) {
+export default function Filter ({ handleCategoryChange, selectedCategories, handleResetAll, allCategories, onlyAvailable, handleOnlyAvailable }: any) {
     return (
 
         <aside className="lg:col-span-3 bg-white border border-slate-100 rounded-2xl p-6 space-y-6 shadow-sm">
@@ -18,7 +18,7 @@ export default function Filter ({ handleCategoryChange, selectedCategories, hand
             <div className="space-y-2">
                 <label className="text-xs font-semibold text-slate-400 uppercase tracking-wider block">Категория</label>
                 <div className="space-y-2">
-                    {allCategories.map(category => (
+                    {allCategories.map((category: string) => (
                         <label key={category} className="flex items-center gap-3 text-sm text-slate-600 hover:text-slate-900 cursor-pointer transition-colors">
                             <input
                                 checked={selectedCategories.includes(category)}

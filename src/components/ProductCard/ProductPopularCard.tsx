@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
-const ProductPopularCard = ({ product }) => {
+const ProductPopularCard = ({ product }:any) => {
 
     return (
         <Link href={`/Product/${product.id}`}>

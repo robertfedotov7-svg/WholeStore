@@ -27,7 +27,8 @@ const Check = () => {
         pickup: 0,
     };
     // Защита от undefined на случай некорректного значения в method
-    const totalDelivery = deliveryPriceMap[deliveryMethod.method] ?? 0;
+    const totalDelivery = deliveryPriceMap[deliveryMethod.method as keyof typeof deliveryPriceMap] ?? 0;
+
 
     return (
         <aside className="lg:col-span-5 bg-white border border-slate-100 rounded-2xl p-6 shadow-sm space-y-6 lg:sticky lg:top-24">

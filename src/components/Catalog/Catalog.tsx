@@ -94,7 +94,7 @@ export default function Catalog() {
                     ) : (
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                             {processedProducts.map(p => (
-                                <ProductCard key={p.id} product={p} />
+                                <ProductCard key={p.id} product={p as any} />
                             ))}
                         </div>
                     )}
