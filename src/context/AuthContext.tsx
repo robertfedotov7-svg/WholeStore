@@ -11,7 +11,7 @@ interface AuthContextType {
     loading: boolean;
 }
 
-const AuthContext = createContext<AuthContextType>({ user: null, role: null, loading: true });
+const AuthContext = createContext<AuthContextType>({ user: null, role: null as any, loading: true });
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
     const [user, setUser] = useState<User | null>(null);
@@ -71,7 +71,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
 
     return (
-        <AuthContext.Provider value={{ user, role, loading }}>
+        <AuthContext.Provider value={{ user, role: role as any, loading }}>
             {children}
         </AuthContext.Provider>
     );
