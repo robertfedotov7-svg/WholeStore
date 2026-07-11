@@ -28,7 +28,7 @@ export default function Header() {
 
                     <Link href="/">
                         <div className="text-xl font-bold text-slate-900 hover:opacity-70 transition-opacity duration-200 cursor-pointer">
-                            Логотип
+                            Лого
                         </div>
                     </Link>
 

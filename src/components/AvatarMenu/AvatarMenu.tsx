@@ -6,6 +6,7 @@ import { db } from "../../firebase";
 import { useApp } from "@/context/AppContext";
 import {InputMask} from "@react-input/mask";
 import {useAuth} from "@/context/AuthContext";
+import { LogIn } from "lucide-react";
 
 interface AvatarMenuProps {
     user: { email: string; uid: string } | null;
@@ -203,11 +204,24 @@ export default function AvatarMenu({ handleLogout, isOpen, setIsOpen }: AvatarMe
                 </div>
             ) : (
                 <Link href="/login">
-                    <button className="inline-flex items-center gap-1.5 rounded-xl bg-indigo-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 shadow-sm shadow-indigo-600/10">
-                        Войти в систему
-                        <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M11 16l4-4m0 0l-4-4m4 4H3" />
-                        </svg>
+                    <button className="
+                            inline-flex items-center justify-center gap-1.5 rounded-xl text-sm font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2
+
+                            /* Стили для МОБИЛЬНЫХ (маленький экран): едва видимый фон и фиолетовая иконка */
+                            p-2 bg-indigo-50/40 text-indigo-600 border border-indigo-500/10 shadow-none
+
+                            /* Стили для ПК (начиная с sm: 640px) — возвращаем ваш исходный фиолетовый вид */
+                            sm:px-4 sm:py-2 sm:bg-indigo-600 sm:text-white sm:border-transparent sm:shadow-sm sm:shadow-indigo-600/10 sm:hover:bg-indigo-700
+                        ">
+
+                        {/* Текст скрывается на экранах меньше 640px (sm) */}
+                        <span className="hidden sm:inline">Войти в систему</span>
+
+                        {/* Иконка: управляем её размером через контейнер или класс компонента */}
+                        <span className="h-7 w-7 sm:h-4 sm:w-4 flex items-center justify-center [&>svg]:h-full [&>svg]:w-full">
+                            <LogIn />
+                        </span>
+
                     </button>
                 </Link>
             )}

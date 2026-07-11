@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation'; // Хук для получения текущего пути
+import { House, ListChecks, ShoppingBasket } from "lucide-react";
 
 export default function Navbar() {
     const pathname = usePathname(); // Получаем текущий URL (например, "/" или "/catalog")
@@ -16,26 +17,31 @@ export default function Navbar() {
     const inactiveStyle = `${baseStyle} text-slate-600 hover:text-slate-900 hover:bg-slate-500/5`;
 
     return (
-        <nav className="flex justify-between items-center gap-2">
+        <nav className="flex justify-between items-center gap-4 sm:gap-6">
             <Link
                 href="/"
-                className={pathname === "/" ? activeStyle : inactiveStyle}
+                className={`${pathname === "/" ? activeStyle : inactiveStyle} flex items-center gap-2`}
             >
-                Главная
+                {/* Эмодзи виден всегда, на мобильных станет чуть крупнее для удобства нажатия */}
+                <span className="text-xl md:text-base" title="Главная"><House /></span>
+                {/* Текст скрывается на экранах меньше 768px (md) */}
+                <span className="hidden md:inline">Главная</span>
             </Link>
 
             <Link
                 href="/catalog"
-                className={pathname.startsWith("/catalog") ? activeStyle : inactiveStyle}
+                className={`${pathname.startsWith("/catalog") ? activeStyle : inactiveStyle} flex items-center gap-2`}
             >
-                Каталог
+                <span className="text-xl md:text-base" title="Каталог"><ListChecks /></span>
+                <span className="hidden md:inline">Каталог</span>
             </Link>
 
             <Link
                 href="/cart"
-                className={pathname.startsWith("/cart") ? activeStyle : inactiveStyle}
+                className={`${pathname.startsWith("/cart") ? activeStyle : inactiveStyle} flex items-center gap-2`}
             >
-                Корзина
+                <span className="text-xl md:text-base" title="Корзина"><ShoppingBasket /></span>
+                <span className="hidden md:inline">Корзина</span>
             </Link>
         </nav>
     );
