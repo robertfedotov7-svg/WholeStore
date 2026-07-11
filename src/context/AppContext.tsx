@@ -1,6 +1,6 @@
 'use client';
 import {createContext, useContext, useState, useEffect, useReducer} from 'react';
-import {TCartItems} from "../types/product.types";
+import {TCartItems} from "@/types/product.types";
 import {CartAction, AppContextType} from "@/types/context.types";
 import ChildrenProps from "@/types/children.types";
 

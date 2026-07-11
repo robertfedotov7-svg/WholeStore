@@ -2,7 +2,7 @@
 import React from "react";
 
 // Добавлен относительный путь к вашему AppContext
-import { useApp } from "../../context/AppContext";
+import { useApp } from "@/context/AppContext";
 
 // 1. ИСПРАВЛЕНО: Добавлены типы для пропсов компонента (сейчас он пустой)
 interface PayBoxProps {}

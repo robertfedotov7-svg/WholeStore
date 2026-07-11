@@ -1,4 +1,4 @@
-import { AppProvider } from '../context/AppContext';
+import { AppProvider } from '@/context/AppContext';
 import Layout from '../components/Layouts/Layout';
 import "./styles/App.css";
 import { Metadata } from 'next';

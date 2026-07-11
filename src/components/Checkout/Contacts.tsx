@@ -5,7 +5,7 @@ import {useAuth} from "@/context/AuthContext";
 
 const Contacts = () => {
     const { user } = useAuth()
-    const { formData, setFormData } = useApp();
+    const { formData } = useApp();
     return (
         <div className="bg-white border border-slate-100 rounded-2xl p-6 shadow-sm space-y-4 font-sans antialiased">
             <h2 className="text-lg font-bold text-slate-900 flex items-center gap-2">

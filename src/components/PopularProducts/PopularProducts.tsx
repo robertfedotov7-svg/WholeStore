@@ -10,7 +10,7 @@ import POPULAR_PRODUCTS from '../../data/popular-products.json'
 export default function PopularProducts() {
     const carouselRef = useRef<HTMLDivElement>(null);
 
-const scroll = (direction:any) => {
+    const scroll = (direction:any) => {
         if (carouselRef.current) {
             const track = carouselRef.current;
             const firstCard = track.firstElementChild;
