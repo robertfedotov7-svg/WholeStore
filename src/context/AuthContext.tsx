@@ -7,7 +7,7 @@ import { useRouter, usePathname } from "next/navigation";
 
 interface AuthContextType {
     user: User | null;
-    role: string | null;
+    role: "user" | "admin" | "manager";
     loading: boolean;
 }
 

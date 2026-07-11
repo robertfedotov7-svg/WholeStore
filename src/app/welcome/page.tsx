@@ -124,7 +124,7 @@ export default function WelcomeOnboarding() {
                             type="text"
                             name="name"
                             placeholder="Иван Иванов"
-                            value={formData.name}
+                            value={formData?.name || ""}
                             onChange={handleFormChange}
                             required
                             disabled={isLoading}

@@ -1,26 +1,51 @@
-"use client";
-import { useAuth } from "@/context/AuthContext";
-import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import React from "react";
 
-export default function AdminPage() {
-    const { user, role, loading } = useAuth();
-    const router = useRouter();
-
-    useEffect(() => {
-        // Если загрузка прошла, а юзер не админ — выкидываем его на главную
-        if (!loading && (!user || role !== "admin")) {
-            router.push("/");
-        }
-    }, [user, role, loading, router]);
-
-    if (loading) return <div style={{ padding: "20px" }}>Проверка прав доступа...</div>;
-    if (!user || role !== "admin") return null; // Не рендерим контент до редиректа
-
+export default function AdminDashboardPage() {
     return (
-        <div style={{ padding: "20px", color: "red" }} className="mt-10">
-            <h1>👑 Секретная Админ-Панель Next.js</h1>
-            <p>Сюда пустило только потому, что у вас роль "admin" в Firestore.</p>
+        <div className="space-y-8">
+            {/* Заголовок */}
+            <div>
+                <h1 className="text-3xl font-bold tracking-tight text-slate-900">Сводка данных</h1>
+                <p className="mt-2 text-sm text-slate-500">Общая статистика вашего магазина на сегодня.</p>
+            </div>
+
+            {/* Сетка карточек */}
+            <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                {/* Карточка 1 */}
+                <div className="bg-white overflow-hidden shadow rounded-xl border border-slate-100 p-6 flex items-center justify-between">
+                    <div>
+                        <p className="text-sm font-medium text-slate-500 truncate">Выручка за месяц</p>
+                        <p className="mt-1 text-3xl font-semibold text-slate-900">145 000 ₽</p>
+                    </div>
+                    <div className="p-3 bg-green-50 text-green-600 rounded-lg text-xl">💰</div>
+                </div>
+
+                {/* Карточка 2 */}
+                <div className="bg-white overflow-hidden shadow rounded-xl border border-slate-100 p-6 flex items-center justify-between">
+                    <div>
+                        <p className="text-sm font-medium text-slate-500 truncate">Заказы сегодня</p>
+                        <p className="mt-1 text-3xl font-semibold text-slate-900">12</p>
+                    </div>
+                    <div className="p-3 bg-blue-50 text-blue-600 rounded-lg text-xl">🛒</div>
+                </div>
+
+                {/* Карточка 3 */}
+                <div className="bg-white overflow-hidden shadow rounded-xl border border-slate-100 p-6 flex items-center justify-between">
+                    <div>
+                        <p className="text-sm font-medium text-slate-500 truncate">Новые клиенты</p>
+                        <p className="mt-1 text-3xl font-semibold text-slate-900">4</p>
+                    </div>
+                    <div className="p-3 bg-purple-50 text-purple-600 rounded-lg text-xl">👥</div>
+                </div>
+            </div>
+
+            {/* Секция с заглушкой под график или лог событий */}
+            <div className="bg-white shadow rounded-xl border border-slate-100 p-6">
+                <h3 className="text-lg font-medium leading-6 text-slate-900 mb-4">Последние обновления</h3>
+                <div className="border-4 border-dashed border-slate-100 rounded-xl h-48 flex items-center justify-center text-slate-400">
+                    Место для графика продаж или ленты заказов
+                </div>
+            </div>
         </div>
     );
 }

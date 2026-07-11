@@ -9,6 +9,7 @@ export interface IProduct {
     price: number;
     oldPrice: number;
     currency: "₽" | "$" | "€";
+    quantity: number;
     isPopular: boolean;
     isAvailable: boolean;
     category: string
